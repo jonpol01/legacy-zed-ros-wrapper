@@ -122,6 +122,8 @@ add_executable(zed_wrapper_node src/zed_wrapper_node.cpp)
 target_link_libraries(zed_wrapper_node ZEDWrapper ${LINK_LIBRARIES})
 add_dependencies(zed_wrapper_node ${PROJECT_NAME}_gencfg)
 
+add_executable(zed_list_devices src/zed_list_devices.cpp)
+target_link_libraries(zed_list_devices ZEDWrapper ${LINK_LIBRARIES})
 ###############################################################################
 
 #Add all files in subdirectories of the project in
@@ -135,6 +137,7 @@ add_custom_target(dummy_${PROJECT_NAME} SOURCES ${extra_files})
 install(TARGETS
   ZEDWrapper
   zed_wrapper_node
+  zed_list_devices
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
