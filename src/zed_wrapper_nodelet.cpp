@@ -1011,6 +1011,7 @@ namespace zed_wrapper {
 
         sensor_msgs::Imu imu_msg;
         imu_msg.header.stamp = ros::Time().fromNSec(imu_data.timestamp);
+        imu_msg.header.frame_id = "camera_imu";
         imu_msg.orientation.x = imu_data.getOrientation()[0];
         imu_msg.orientation.y = imu_data.getOrientation()[1];
         imu_msg.orientation.z = imu_data.getOrientation()[2];
