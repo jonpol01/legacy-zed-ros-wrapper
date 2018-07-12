@@ -136,6 +136,7 @@ namespace zed_wrapper {
         int gpu_id;
         int zed_id;
         int depth_stabilization;
+        float min_distance;
         std::string odometry_DB;
         std::string svo_filepath;
 
@@ -785,6 +786,7 @@ namespace zed_wrapper {
             zed_id = 0;
             serial_number = 0;
             odometry_DB = "";
+            min_distance = 0.3;
 
             nh = getMTNodeHandle();
             nh_ns = getMTPrivateNodeHandle();
@@ -801,6 +803,7 @@ namespace zed_wrapper {
             nh_ns.getParam("quality", quality);
             nh_ns.getParam("sensing_mode", sensing_mode);
             nh_ns.getParam("frame_rate", rate);
+            nh_ns.getParam("min_distance", min_distance);
             nh_ns.getParam("odometry_DB", odometry_DB);
             nh_ns.getParam("openni_depth_mode", openniDepthMode);
             nh_ns.getParam("gpu_id", gpu_id);
@@ -923,7 +926,7 @@ namespace zed_wrapper {
             }
 
             param.coordinate_units = sl::UNIT_METER;
-            param.depth_minimum_distance = 0.3;
+            param.depth_minimum_distance = min_distance;
             param.coordinate_system = sl::COORDINATE_SYSTEM_IMAGE;
             param.depth_mode = static_cast<sl::DEPTH_MODE> (quality);
             param.sdk_verbose = true;
