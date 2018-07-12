@@ -923,6 +923,7 @@ namespace zed_wrapper {
             }
 
             param.coordinate_units = sl::UNIT_METER;
+            param.depth_minimum_distance = 0.3;
             param.coordinate_system = sl::COORDINATE_SYSTEM_IMAGE;
             param.depth_mode = static_cast<sl::DEPTH_MODE> (quality);
             param.sdk_verbose = true;
