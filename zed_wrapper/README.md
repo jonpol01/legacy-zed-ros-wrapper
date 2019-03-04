@@ -1,10 +1,6 @@
-![](./images/Picto+STEREOLABS_Black.png)
-
 # Stereolabs ZED Camera - ROS Integration
 
 This package lets you use the ZED stereo camera with ROS. It outputs the camera left and right images, depth map, point cloud, pose information and supports the use of multiple ZED cameras.
-
-[More information](https://www.stereolabs.com/documentation/guides/using-zed-with-ros/introduction.html)
 
 ## Getting started
 
@@ -43,34 +39,18 @@ Open a terminal and build the package:
 
 ### Run the program
 
-To launch the wrapper [along with an Rviz preview](./zed_display_rviz), open a terminal and launch:
-
-    $ roslaunch zed_display_rviz display.launch # by default open a ZED
-
-or
-
-    $ roslaunch zed_display_rviz display_zedm.launch # open a ZED Mini
-
-
-To launch the wrapper without Rviz, use:
+To launch ZED node, use:
 
     $ roslaunch zed_wrapper zed.launch
 
+**Note**: Remember to change the parameter `camera_model` to `0` if you are using a **ZED** or to `1` if you are using a **ZED Mini**
+
  To select the ZED from its serial number
 
-    $ roslaunch zed_wrapper zed.launch serial_number:=1010 #replace 1010 with the actual SN
+    $ roslaunch zed_wrapper zed.launch serial_number:=1010 
 
-### Examples
+**Note**: replace 1010 with the actual SN
 
-Alongside the wrapper itself and the Rviz display, a few examples are provided to interface the ZED with other ROS packages :
+If you want to use the `ZEDWrapperNodelet` with an external nodelet manager follow the `zed_nodelet_example` approach
 
-- [RTAB-Map](http://introlab.github.io/rtabmap/) : See [zed_rtabmap_example](./examples/zed_rtabmap_example)
-- ROS Nodelet, `depthimage_to_laserscan` : See [zed_nodelet_example](./examples/zed_nodelet_example)
-
-### Tutorials
-
-A few tutorials are provided to understand how to use the ZED node in the ROS environment :
-
-- Video subscribing : See [zed_video_sub_tutorial](./tutorials/zed_video_sub_tutorial)
-- Depth subscribing : See [zed_depth_sub_tutorial](./tutorials/zed_depth_sub_tutorial)
-- Positional Tracking subscribing : See [zed_tracking_sub_tutorial](./tutorials/zed_tracking_sub_tutorial)
+[More](https://www.stereolabs.com/documentation/guides/using-zed-with-ros/introduction.html)
